@@ -1,0 +1,20 @@
+{% extends 'basic/base.html' %}
+{% block content %}
+    {% for product in products %}
+        <div class="col-md-4">
+              <div class="card mb-4 box-shadow">
+                <img class="card-img-top"  style="height: 225px; width: 100%; display: block;" src="{{ product.image.url }}" data-holder-rendered="true">
+                <div class="card-body">
+                    <h3>{{ product.title }}</h3>
+                  <p class="card-text">{{ product.description }}</p>
+                  <div class="d-flex justify-content-between align-items-center">
+                    <div class="btn-group">
+                      <a href="{% url 'basic:detail' product.pk %}"><button onclick="{% url 'basic:detail' product.pk %}" type="button" class="btn btn-sm btn-outline-secondary">View</button></a>
+                    </div>
+                    <small class="text-muted">{{ product.created_at }}</small>
+                  </div>
+                </div>
+              </div>
+            </div>
+    {% endfor %}
+{% endblock %}
